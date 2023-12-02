@@ -1,0 +1,29 @@
+<!-- Ваш account.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>СписокТем</title>
+</head>
+<body>
+    <h1>Привет, {{ user.username }}!</h1>
+    <h2>Добавить новую тему:</h2>
+    <form method="POST">
+        <input type="text" name="title_name" placeholder="Название" required>
+        <button type="submit">Добавить тему</button>
+    </form>
+
+    <h2>Список тем:</h2>
+    <ul>
+        {% for title in titles %}
+            <li><a href="/title_statements/{{ title.id }}">{{ title.title_name }}</a></li>
+        {% endfor %}
+    </ul>
+
+    <div class="container">
+      <h2 id="greeting"></h2>
+      <div class="button">
+          <a href="/logout">Выйти</a>
+      </div>
+
+</body>
+</html>

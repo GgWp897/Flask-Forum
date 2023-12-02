@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Login page</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+    #knopka{
+        background-color: aqua;
+        color: grey; 
+        cursor: pointer;
+    }
+    #knopka:hover{
+        transition: 1s;
+        background-color: rgb(0, 255, 98);
+        color: white
+    }
+    #btn2{
+        color:rgb(0, 38, 255)
+    }
+    #btn2::hover{
+        color: white
+    }
+        
+    
+</style>
+
+</head>
+<body style="background-color: grey;">
+
+<div style="margin-top: 15%">
+    <div>
+        <div style="margin-left: 40%">
+            <h1 style="
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            margin-left: 9%
+            "
+            >Авторизация</h1>
+            <form action="/login" method="POST">
+                <input type="text" class="form-control" id="username" placeholder="Email" name="username" style="width: 35%; height: 50px; border: none; border-radius: 20px; text-align: center; font-size: 30px; font-weight: bold; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">
+                <br>
+                <br>
+                <input type="password" class="form-control" id="pwd" placeholder="Пароль" name="password" style="width: 35%; height: 50px; border: none; border-radius: 20px; text-align: center; font-size: 30px; font-weight: bold; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">
+                <div style="margin-left: 3%">
+                    <br>
+                    <button id="knopka" type="submit" style="width: 30%; height: 50px; border: none; border-radius: 20px; font-size: 30px; font-weight: bold; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">Войти</button>
+                    <br>
+                    <a href="/register" id="btn2" style="text-decoration: none; font-size: 30px; font-weight: bold; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">Регистрация</a>
+                </div>
+            </form>
+        </div>
+
+    </div>
+  
+</div>
+
+</body>
+</html>
