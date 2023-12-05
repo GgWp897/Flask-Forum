@@ -1,29 +1,69 @@
-<!-- Ваш account.html -->
 <!DOCTYPE html>
 <html>
 <head>
     <title>СписокТем</title>
+    <style>
+        body {
+            max-width: 1170px;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 0px;
+            padding-right: 150px;
+        }
+
+        #new_title{
+            font-size: 20px; 
+            margin-left:12.5%; 
+            border: none; 
+            border-radius: 20px; 
+            background-color: #ff6933; 
+            color: white; 
+            height: 35px; 
+            width: 180px; 
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            cursor: pointer;
+        }
+
+        #new_title:hover{
+            transition: 1s;
+            background-color: #00c2fd;
+        }
+        #spisok{
+            text-decoration: none; 
+            color: white; 
+            font-size: 25px; 
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+        }
+        #spisok:hover{
+            transition: 0.3s;
+            color: #ff6933
+        }
+    </style>
 </head>
-<body>
-    <h1>Привет, {{ user.username }}!</h1>
-    <h2>Добавить новую тему:</h2>
-    <form method="POST">
-        <input type="text" name="title_name" placeholder="Название" required>
-        <button type="submit">Добавить тему</button>
+
+<body style="background-color: #3d5a80">
+    <a style="text-decoration: none; color: white; font-weight: bold; font-size: 25px; margin-left: 95%; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif"  href="/logout">Выйти</a>
+    <div style="margin-left: 41%;">
+        <text style="font-size: 50px; font-weight: bold; color: white; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">Привет, {{ user.username }}!</text>
+    </div>
+
+    <div style="margin-left: 46%; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">
+        <h2>Добавить новую тему:</h2>
+    </div>
+
+    <form method="POST" style="margin-left: 41.5%;">
+        <input style="border: none; border-radius: 20px; background-color: #293241; width: 350px; height: 50px; font-size: 25px; text-align: center; color: white; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif" type="text" name="title_name" placeholder="Название" required>
+        <br>
+        <br>
+        <button id="new_title" type="submit">Добавить тему</button>
     </form>
 
-    <h2>Список тем:</h2>
-    <ul>
+    <h2 style="color: #ff6933;font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">Список тем:</h2>
+    <ul style="margin-left: -40px;">
         {% for title in titles %}
-            <li><a href="/title_statements/{{ title.id }}">{{ title.title_name }}</a></li>
+            <li style="color: rgba(0, 0, 0, 0);"><a id="spisok" href="/title_statements/{{ title.id }}" >{{ title.title_name }}</a></li>
         {% endfor %}
-    </ul>
-
-    <div class="container">
-      <h2 id="greeting"></h2>
-      <div class="button">
-          <a href="/logout">Выйти</a>
-      </div>
+    </ul>      
 
 </body>
 </html>
