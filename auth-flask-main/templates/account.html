@@ -55,15 +55,29 @@
         <input style="border: none; border-radius: 20px; background-color: #293241; width: 350px; height: 50px; font-size: 25px; text-align: center; color: white; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif" type="text" name="title_name" placeholder="Название" required>
         <br>
         <br>
+        <input style="border: none; border-radius: 20px; background-color: #293241; width: 350px; height: 50px; font-size: 25px; text-align: center; color: white; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif" type="text" name="full_text" placeholder="Описание" required>
         <button id="new_title" type="submit">Добавить тему</button>
     </form>
 
     <h2 style="color: #ff6933;font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">Список тем:</h2>
-    <ul style="margin-left: -40px;">
+    <ul style="list-style: none; padding: 0;">
         {% for title in titles %}
-            <li style="color: rgba(0, 0, 0, 0);"><a id="spisok" href="/title_statements/{{ title.id }}" >{{ title.title_name }}</a></li>
+        <li style="margin-bottom: 10px;">
+            <a href="/title_statements/{{ title.id }}" style="text-decoration: none; color: black; font-weight: bold; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">
+                {{ title.title_name }}
+            </a>
+            <p style="margin-top: 5px; color: #ffffff;">
+                <a href="/title_statements/{{ title.id }}" style="text-decoration: none; color: #ffffff; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">
+                    {{ title.full_text_title }}
+                </a>
+            </p>
+        </li>
         {% endfor %}
-    </ul>      
+    </ul>   
+        <div style="margin-left: 0%;">
+            <br>
+            <a id="btn2" href="/admin" style="text-decoration: none; font-size: 30px; font-weight: bold; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">Просмотр таблиц</a>
+        </div>
 
 </body>
 </html>
