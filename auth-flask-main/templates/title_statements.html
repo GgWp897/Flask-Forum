@@ -3,6 +3,18 @@
 <head>
     <title>{{ title.title_name }} Обсуждение</title>
     <style>
+            ul {
+        padding: 0;
+        width: 50%; 
+        border-radius: 10px; 
+    }
+    ul li {
+        padding: 15px;
+        margin-bottom: 20px; /* Отступ между сообщениями */
+        border: 5px solid #ccc; /* Граница вокруг сообщения */
+        border-radius: 5px; /* Скругление углов */
+    }
+    
         a{
             text-decoration: none; 
             font-size: 25px; 
@@ -83,24 +95,25 @@
         </div>
 
     <h1>Обсуждение: {{ title.title_name }}</h1>
+    <h2 style="color: white;">{{title.full_text_title}}</h2>
     <h2>Добавить сообщение:</h2>
-    <form method="POST">
-        <input id="input1" type="text" name="name" placeholder="Тема" required><br><br>
+    <form method="POST" id="add_message">
         <textarea id="full_text" name="full_text" placeholder="Содержание" required></textarea><br><br>
-        <input id="date" type="date" name="date" required><br><br>
+        <!-- <input id="date" type="date" name="date" required><br><br> -->
         <button id="btn" type="submit">Отправить</button>
     </form>
 
     <h2>Список Сообщений:</h2>
-    <ul style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; color: #000000;">
+    <ul>
         {% for statement in statements %}
-        <div style="color: white;">
-            <li>{{ statement.name }}
+        <li>
+            <div style="color: white;font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+            ">
+                {{ statement.name }}
                 <p>{{ statement.full_text }}</p>
-                <p style="color: black; font-weight: bold">{{statement.user_username}}&nbsp;&nbsp;&nbsp;&nbsp;{{statement.date}}</p>
-                <p></p>
-            </li>
-        </div>
+                <p style="color: black; font-weight: bold">{{ statement.user_username }}&nbsp;&nbsp;&nbsp;&nbsp;{{ statement.date }}</p>
+            </div>
+        </li>
         {% endfor %}
     </ul>
 
