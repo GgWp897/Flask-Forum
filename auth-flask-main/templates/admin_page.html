@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tables</title>
+    <style>
+        .table-container {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            align-items: flex-start;
+        }
+        table {
+            margin-right: 20px;
+        }
+    </style>
+        <script>
+            function deleteRow(tableId, button) {
+                var row = button.parentNode.parentNode;
+                row.parentNode.removeChild(row);
+            }
+        </script>
+</head>
+<body>
+    <div style="margin-left: 0%">
+        <br>
+        <a id="btn2" href="/account" style="text-decoration: none; font-size: 30px; font-weight: bold; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">Назад</a>
+    </div>
+    <div class="table-container">
+        <div>
+            <h1>Users</h1>
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Username</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for user in users %}
+                        <tr>
+                            <td>{{ user.id }}</td>
+                            <td>{{ user.username }}</td>
+                            <td>
+                                <form method="POST" action="/admin/delete_user">
+                                    <input type="hidden" name="user_id" value="{{ user.id }}">
+                                    <button type="submit">Удалить пользователя</button>
+                                </form>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <div>
+            <h1>Titles</h1>
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Title Name</th>
+                        <th>User ID</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for title in titles %}
+                        <tr>
+                            <td>{{ title.id }}</td>
+                            <td>{{ title.title_name }}</td>
+                            <td>{{ title.user_id }}</td>
+                            <td>
+                                <form method="POST" action="/admin/delete_title">
+                                    <input type="hidden" name="title_id" value="{{ title.id }}">
+                                    <button type="submit">Удалить тему</button>
+                                </form>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <h1>Statements</h1>
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Full Text</th>
+                        <th>Date</th>
+                        <th>User Username</th>
+                        <th>Title ID</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for statement in statements %}
+                        <tr>
+                            <td>{{ statement.id }}</td>
+                            <td>{{ statement.full_text }}</td>
+                            <td>{{ statement.date }}</td>
+                            <td>{{ statement.user_username }}</td>
+                            <td>{{ statement.title_id }}</td>
+                            <td>
+                                <form method="POST" action="/admin/delete_statement">
+                                    <input type="hidden" name="statement_id" value="{{ statement.id }}">
+                                    <button type="submit">Удалить сообщение</button>
+                                </form>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <h1>Добавить пользователя</h1>
+    <form method="POST" action="/admin/add_user">
+        <input type="text" name="username" placeholder="Email">
+        <input type="password" name="password" placeholder="Пароль">
+        <button type="submit">Добавить пользователя</button>
+    </form>
+
+    <h1>Добавить тему</h1>
+    <form action="/admin/add_title" method="POST">
+        <input type="text" name="title_name" placeholder="Название">
+        <select name="user_id">
+            {% for user in users %}
+                <option value="{{ user.id }}">{{ user.username }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit">Добавить тему</button>
+    </form>
+
+</body>
+</html>
